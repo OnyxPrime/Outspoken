@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../../services/product.service', './product-detail.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './product.component', './product-detail.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,40 +8,39 @@ System.register(['angular2/core', '../../services/product.service', './product-d
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, product_service_1, product_detail_component_1;
+    var core_1, router_1, product_component_1, product_detail_component_1;
     var OutspokenAppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (product_service_1_1) {
-                product_service_1 = product_service_1_1;
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
+            function (product_component_1_1) {
+                product_component_1 = product_component_1_1;
             },
             function (product_detail_component_1_1) {
                 product_detail_component_1 = product_detail_component_1_1;
             }],
         execute: function() {
             OutspokenAppComponent = (function () {
-                function OutspokenAppComponent(_productService) {
-                    this._productService = _productService;
+                function OutspokenAppComponent(router, location) {
+                    this.router = router;
+                    this.location = location;
                 }
-                OutspokenAppComponent.prototype.ngOnInit = function () {
-                    this.getProducts();
-                };
-                OutspokenAppComponent.prototype.getProducts = function () {
-                    var _this = this;
-                    this._productService.getProducts().then(function (products) { return _this.products = products; });
-                };
                 OutspokenAppComponent = __decorate([
                     core_1.Component({
                         selector: 'outspoken-app',
                         templateUrl: 'app/templates/Home/main.html',
-                        styleUrls: ['app/css/main.css'],
-                        directives: [product_detail_component_1.ProductDetailComponent],
-                        providers: [product_service_1.ProductService]
-                    }), 
-                    __metadata('design:paramtypes', [product_service_1.ProductService])
+                        directives: [router_1.ROUTER_DIRECTIVES]
+                    }),
+                    router_1.RouteConfig([
+                        new router_1.Route({ path: "/", name: "Product", component: product_component_1.ProductComponent }),
+                        new router_1.Route({ path: "/Product/:id", name: "ProductDetail", component: product_detail_component_1.ProductDetailComponent }),
+                    ]), 
+                    __metadata('design:paramtypes', [router_1.Router, router_1.Location])
                 ], OutspokenAppComponent);
                 return OutspokenAppComponent;
             })();

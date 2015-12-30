@@ -1,0 +1,9 @@
+<div class='starter-template'>
+    <h2>Products</h2>
+    <hr/>
+    <ul class="thumbnails">
+        <li *ngFor="#product of products" class="span5">
+            <product-thumbnail [product]=product></product-thumbnail>
+        </li>        
+    </ul>
+</div>

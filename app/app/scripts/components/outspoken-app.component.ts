@@ -1,26 +1,25 @@
-import {Component} from 'angular2/core';
-import {OnInit} from 'angular2/core';
+import {Component, OnInit, provide} from 'angular2/core';
+import {bootstrap} from 'angular2/platform/browser';
+import {RouteConfig, RouterLink, RouterOutlet, Route, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Location, LocationStrategy, HashLocationStrategy, Router} from 'angular2/router'
 import {ProductService} from '../../services/product.service'
+import {ProductComponent} from './product.component'
 import {ProductDetailComponent} from './product-detail.component'
 
 @Component({
     selector: 'outspoken-app',
     templateUrl:'app/templates/Home/main.html',
-    styleUrls:['app/css/main.css'],
-    directives: [ProductDetailComponent],
-    providers: [ProductService]
+    directives: [ROUTER_DIRECTIVES]
 })
-export class OutspokenAppComponent implements OnInit {
-    constructor(private _productService: ProductService) { }
+@RouteConfig([
+    new Route({ path: "/", name: "Product", component:ProductComponent}),
+    new Route({ path: "/Product/:id", name: "ProductDetail", component:ProductDetailComponent}),
+])
+export class OutspokenAppComponent {
+    router: Router;
+    location: Location;
     
-    ngOnInit(){
-        this.getProducts();
-    }
-    
-    public products: Product[];
-    
-    
-    getProducts(){
-        this._productService.getProducts().then(products=> this.products = products);
+    constructor(router: Router, location: Location) { 
+        this.router = router;
+        this.location = location;
     }
 }
