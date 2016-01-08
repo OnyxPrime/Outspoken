@@ -2,7 +2,7 @@ body {
   padding-top: 50px;
 }
 .starter-template {
-  padding: 40px 15px;
+  padding: 0px 15px 40px 15px;
   text-align: left;
 }
 
@@ -17,7 +17,9 @@ select, textarea {
 
 .well-title {
   margin-top: 0px;
+  padding-top: 0px;
 }
+
 .session {
     -webkit-touch-callout: none;
     -webkit-user-select: none;

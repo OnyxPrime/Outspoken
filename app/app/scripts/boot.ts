@@ -3,4 +3,4 @@ import {provide} from 'angular2/core'
 import {RouteConfig, RouterLink, RouterOutlet, Route, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Location, LocationStrategy, HashLocationStrategy, Router} from 'angular2/router';
 import {OutspokenAppComponent} from './components/outspoken-app.component';
 
-bootstrap(OutspokenAppComponent, [ROUTER_PROVIDERS, provide(LocationStrategy, {useClass: HashLocationStrategy})]);
+bootstrap(OutspokenAppComponent, [ROUTER_PROVIDERS]);

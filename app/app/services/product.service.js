@@ -9,7 +9,7 @@ System.register(['../scripts/mocks/mock-products', 'angular2/core'], function(ex
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var mock_products_1, core_1;
-    var ProductService;
+    var ProductService, productsPromise;
     return {
         setters:[
             function (mock_products_1_1) {
@@ -25,6 +25,9 @@ System.register(['../scripts/mocks/mock-products', 'angular2/core'], function(ex
                 ProductService.prototype.getProducts = function () {
                     return Promise.resolve(mock_products_1.PRODUCTS);
                 };
+                ProductService.prototype.getProduct = function (id) {
+                    return productsPromise.then(function (products) { return products.filter(function (h) { return h.id === id; })[0]; });
+                };
                 ProductService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [])
@@ -32,6 +35,7 @@ System.register(['../scripts/mocks/mock-products', 'angular2/core'], function(ex
                 return ProductService;
             })();
             exports_1("ProductService", ProductService);
+            productsPromise = Promise.resolve(mock_products_1.PRODUCTS);
         }
     }
 });

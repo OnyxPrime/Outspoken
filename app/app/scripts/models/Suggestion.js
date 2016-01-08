@@ -5,4 +5,4 @@ System.register([], function(exports_1) {
         }
     }
 });
-//# sourceMappingURL=product.js.map
+//# sourceMappingURL=Suggestion.js.map

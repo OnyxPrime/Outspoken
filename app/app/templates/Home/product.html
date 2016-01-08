@@ -2,7 +2,7 @@
     <h2>Products</h2>
     <hr/>
     <ul class="thumbnails">
-        <li *ngFor="#product of products" class="span12">
+        <li *ngFor="#product of products" class="span12" (click)='onSelect(product)'>
             <product-thumbnail [product]=product></product-thumbnail>
         </li>        
     </ul>
